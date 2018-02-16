@@ -1,9 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-  <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-{% endblock %}
-
 {% block title %}
   List
 {% endblock %}
@@ -12,7 +8,7 @@
   <div class="container">
     <div class="row new-board">
       <div class="col">
-        <button type="button" class="btn btn-primary">New Board</button>
+        <a class="btn btn-primary" href="{{ path('board_new') }}">New Board</a>
       </div>
     </div>
     <div class="row">
@@ -23,6 +19,7 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Description</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -31,6 +28,10 @@
               <th scope="row">{{ board.id }}</th>
               <td> {{ board.name }} </td>
               <td> {{ board.description }} </td>
+              <td>
+                <a href="{{ path('board_update', {'id': board.id }) }}" class="btn btn-xs btn-primary">Update</a>
+                <a href="{{ path('board_delete', {'id': board.id }) }}" class="btn btn-xs btn-danger">Delete</a>
+              </td>
             </tr>
           {% else %}
               <tr>

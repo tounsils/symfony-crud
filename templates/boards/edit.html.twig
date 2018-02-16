@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Add Board
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row new-board">
+      <div class="col">
+        <a class="btn btn-primary" href="{{ path('board_list') }}">Return</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {{ form_start(form) }}
+          <br>
+          {{ form_errors(form) }}
+            <div class="form-group">
+              {{ form_label(form.name) }}
+              {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+              {{ form_errors(form.name) }}
+            </div>
+            <div class="form-group">
+              {{ form_label(form.description) }}
+              {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+              {{ form_errors(form.description) }}
+            </div>
+            {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+        {{ form_end(form) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}
